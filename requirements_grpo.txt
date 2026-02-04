@@ -11,6 +11,6 @@ huggingface_hub
 deepspeed
 accelerate
 wandb
-vllm==0.11.0
+vllm==0.14.1
 openai
 numpy<2.3.0
