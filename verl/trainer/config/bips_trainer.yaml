@@ -1,0 +1,30 @@
+hydra:
+  searchpath:
+    - file://verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+data:
+  return_multi_modal_inputs: true
+  image_pres_key: null
+  image_abl_key: null
+  aug_key: pres_multi_modal_data
+
+algorithm:
+  use_kl_sep: false
+  use_kl_cons: false
+
+actor_rollout_ref:
+  actor:
+    use_kl_sep: ${algorithm.use_kl_sep}
+    kl_sep_penalty_type: low_var_kl
+    kl_sep_clip: 0.2
+    kl_sep_coef: 0.02
+
+    use_kl_cons: ${algorithm.use_kl_cons}
+    kl_cons_penalty_type: low_var_kl
+    kl_cons_clip: 1.0
+    kl_cons_coef: 0.01
+

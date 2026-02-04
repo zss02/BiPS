@@ -1,0 +1,16 @@
+datasets
+pillow
+matplotlib
+transformers==4.57.3
+mathruler
+math-verify
+fastapi
+qwen_vl_utils
+uvicorn
+huggingface_hub
+deepspeed
+accelerate
+wandb
+vllm==0.11.0
+openai
+numpy<2.3.0
