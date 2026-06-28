@@ -12,6 +12,8 @@
 
 This is the official repository for the paper "See Less, See Right: Bi-directional Perceptual Shaping For Multimodal Reasoning".
 
+**BiPS transforms visual cues into training-time policy constraints** by constructing evidence-preserving and evidence-ablated views, enabling the model to internalize fine-grained perception without inference-time overhead. This formulation can also be interpreted from the perspective of visual on-policy distillation (OPD) / on-policy self-distillation, where information-asymmetric visual views provide dense policy-shaping signals for GRPO training.
+
 ### Motivation
 
 To mitigate the perceptual bottleneck in VLMs, recent approaches often rely on external tools or explicit intermediate visual cues (e.g., generated masks, bounding boxes, or latent tokens) during inference. However, these paradigms face three critical limitations:
@@ -34,6 +36,8 @@ BiPS shapes the model's internal policy through a two-stage curriculum using pro
 - **Consistency Stage**: Minimizes divergence between the original image and an Evidence-Preserving View, teaching the model to focus on complete, supporting visual details.
 
 - **Separation Stage**: Maximizes divergence from an Evidence-Ablated View, penalizing the model for relying on text-only shortcuts when visual evidence is missing.
+
+From the perspective of on-policy distillation, the Evidence-Preserving View acts as a privileged positive visual condition, while the Evidence-Ablated View provides a negative visual condition for bidirectional policy shaping.
 
 By strictly enforcing these constraints during training, BiPS achieves fine-grained visual grounding without any additional inference cost. Across 8 benchmarks, it boosts Qwen2.5-VL-7B by an average of 8.2%, demonstrating strong cross-domain generalization.
 
